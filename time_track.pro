@@ -13,8 +13,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    dbcreator.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    dbcreator.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    time_track.qrc
