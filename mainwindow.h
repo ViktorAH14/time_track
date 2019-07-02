@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-class QSqlTableModel;
+class QSqlRelationalTableModel;
 
 namespace Ui {
 class MainWindow;
@@ -28,11 +28,19 @@ private:
 
     bool connectDB(const QString &dbName);
     bool createDB(const QString &dbName);
-    void createModel();
+    void createPositionModel();
+    void createOrganizationModel();
+    void createTypeWorkingTimeModel();
+    void createPersonModel();
+    void createTaimeTrackModel();
     void setupView();
 
     QString dbName;
-    QSqlTableModel *m_model;
+    QSqlRelationalTableModel *m_modelPosition;
+    QSqlRelationalTableModel *m_modelOrganization;
+    QSqlRelationalTableModel *m_modelTypeWorkingTime;
+    QSqlRelationalTableModel *m_modelPerson;
+    QSqlRelationalTableModel *m_modelTimeTrack;
 };
 
 #endif // MAINWINDOW_H
