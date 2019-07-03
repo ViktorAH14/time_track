@@ -16,14 +16,17 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     dbcreator.cpp \
     table.cpp \
-    tableiomapper.cpp
+    tableiomapper.cpp \
+    viewcatalogform.cpp
 
 HEADERS  += mainwindow.h \
     dbcreator.h \
     table.h \
-    tableiomapper.h
+    tableiomapper.h \
+    viewcatalogform.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    viewcatalogform.ui
 
 RESOURCES += \
     time_track.qrc
