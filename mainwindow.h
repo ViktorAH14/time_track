@@ -43,7 +43,7 @@ private:
     bool connectDB(const QString &dbName);
     bool createDB(const QString &dbName);
     void createModel();
-    void deletModel();
+    void deleteModel();
     void setupView();
 
     TablePtr organization;

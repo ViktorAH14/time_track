@@ -1,12 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "dbcreator.h"
+#include "table.h"
+#include "tableiomapper.h"
+#include "viewcatalogform.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
-#include <QSqlRelationalTableModel>
-#include <QSqlRelationalDelegate>
-#include <QSqlRelation>
 #include <QSqlError>
 #include <QMessageBox>
 #include <QFileDialog>
@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    deleteModel();
 }
 
 void MainWindow::newDB()
@@ -35,11 +36,7 @@ void MainWindow::newDB()
             dbName = fd.selectedFiles().at(0);
             setWindowTitle(trUtf8("Time tracking - ") + dbName);
             createDB(dbName);
-            createPositionModel();
-            createOrganizationModel();
-            createTypeWorkingTimeModel();
-            createPersonModel();
-            createTaimeTrackModel();
+            createModel();
             setupView();
         }
     }
@@ -57,24 +54,50 @@ void MainWindow::openDB()
             dbName = fd.selectedFiles().at(0);
             setWindowTitle(trUtf8("Time tracking - ") + dbName);
             connectDB(dbName);
-            createPositionModel();
-            createOrganizationModel();
-            createTypeWorkingTimeModel();
-            createPersonModel();
-            createTaimeTrackModel();
+            createModel();
             setupView();
         }
     }
 }
 
-void MainWindow::sortData()
+void MainWindow::showOrganizationForm()
 {
-    //TODO Release sortData();
+
 }
 
-void MainWindow::updateModel()
+void MainWindow::showPositionForm()
 {
-    //TODO Release updateModel();
+
+}
+
+void MainWindow::showTypeWorkingTimeForm()
+{
+
+}
+
+void MainWindow::showPersonForm()
+{
+
+}
+
+void MainWindow::addRecord()
+{
+
+}
+
+void MainWindow::deleteRecord()
+{
+
+}
+
+void MainWindow::cancelChange()
+{
+
+}
+
+void MainWindow::save()
+{
+
 }
 
 bool MainWindow::connectDB(const QString &dbName)
@@ -102,51 +125,27 @@ bool MainWindow::createDB(const QString &dbName)
     return true;
 }
 
-void MainWindow::createPositionModel()
+void MainWindow::createModel()
 {
-    m_modelPosition = new QSqlRelationalTableModel(this);
-    m_modelPosition->setTable("Position");
-    m_modelPosition->select();
+
 }
 
-void MainWindow::createOrganizationModel()
+void MainWindow::deleteModel()
 {
-    m_modelOrganization = new QSqlRelationalTableModel(this);
-    m_modelOrganization->setTable("Organization");
-    m_modelOrganization->select();
-}
+    delete organizationMapper;
+    delete positionMapper;
+    delete typeworkingtimeMapper;
+    delete personMapper;
+    delete timetrackMapper;
 
-void MainWindow::createTypeWorkingTimeModel()
-{
-    m_modelTypeWorkingTime = new QSqlRelationalTableModel(this);
-    m_modelTypeWorkingTime->setTable("TypeWorkingTime");
-    m_modelTypeWorkingTime->select();
-}
-
-void MainWindow::createPersonModel()
-{
-    m_modelPerson = new QSqlRelationalTableModel(this);
-    m_modelPerson->setTable("Person");
-    m_modelPerson->setRelation(2, QSqlRelation("Organization", "OrganizationID", "Organization"));
-    m_modelPerson->setRelation(3, QSqlRelation("Position", "PositionID", "Position"));
-    m_modelPerson->select();
-}
-
-void MainWindow::createTaimeTrackModel()
-{
-    m_modelTimeTrack = new QSqlRelationalTableModel(this);
-    m_modelTimeTrack->setTable("TimeTrack");
-    m_modelTimeTrack->setRelation(1, QSqlRelation("Person", "PersonID", "Person"));
-    m_modelTimeTrack->setRelation(4, QSqlRelation("TypeWorkingTime", "TypeWorkingTimeID", "TypeWorkingTime"));
-    m_modelTimeTrack->select();
+    delete organization;
+    delete position;
+    delete typeworkingtime;
+    delete person;
+    delete timetrack;
 }
 
 void MainWindow::setupView()
 {
-    ui->tableViewMain->setModel(m_modelTimeTrack);
-    ui->tableViewMain->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableViewMain->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tableViewMain->resizeColumnsToContents();
-    ui->tableViewMain->setItemDelegate(new QSqlRelationalDelegate(ui->tableViewMain));
-    ui->tableViewMain->horizontalHeader()->setStretchLastSection(true);
+
 }
