@@ -4,11 +4,16 @@
 #include <QMainWindow>
 #include <QPointer>
 
-class QSqlRelationalTableModel;
-
 namespace Ui {
 class MainWindow;
 }
+
+class Table;
+class TableIOMapper;
+class ViewCatalogForm;
+
+typedef QPointer<Table> TablePtr;
+typedef QPointer<TableIOMapper> TableMapperPtr;
 
 class MainWindow : public QMainWindow
 {
@@ -21,27 +26,44 @@ public:
 private slots:
     void newDB();
     void openDB();
-    void sortData();
-    void updateModel();
+
+    void showOrganizationForm();
+    void showPositionForm();
+    void showTypeWorkingTimeForm();
+    void showPersonForm();
+
+    void addRecord();
+    void deleteRecord();
+    void cancelChange();
+    void save();
 
 private:
     Ui::MainWindow *ui;
 
     bool connectDB(const QString &dbName);
     bool createDB(const QString &dbName);
-    void createPositionModel();
-    void createOrganizationModel();
-    void createTypeWorkingTimeModel();
-    void createPersonModel();
-    void createTaimeTrackModel();
+    void createModel();
+    void deletModel();
     void setupView();
 
+    TablePtr organization;
+    TablePtr position;
+    TablePtr typeworkingtime;
+    TablePtr person;
+    TablePtr timetrack;
+
+    TableMapperPtr organizationMapper;
+    TableMapperPtr positionMapper;
+    TableMapperPtr typeworkingtimeMapper;
+    TableMapperPtr personMapper;
+    TableMapperPtr timetrackMapper;
+
+    ViewCatalogForm *organizationForm;
+    ViewCatalogForm *positionForm;
+    ViewCatalogForm *typeworkingtimeForm;
+    ViewCatalogForm *personForm;
+
     QString dbName;
-    QSqlRelationalTableModel *m_modelPosition;
-    QSqlRelationalTableModel *m_modelOrganization;
-    QSqlRelationalTableModel *m_modelTypeWorkingTime;
-    QSqlRelationalTableModel *m_modelPerson;
-    QSqlRelationalTableModel *m_modelTimeTrack;
 };
 
 #endif // MAINWINDOW_H
