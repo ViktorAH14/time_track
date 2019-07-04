@@ -15,7 +15,7 @@ class Table : public QObject
     Q_OBJECT
 
 public:
-    Table(QSqlDatabase *db, const QString &tableName);
+    explicit Table(QSqlDatabase *db, const QString &tableName, QObject *parent = 0);
     ~Table();
 
     bool openTable();
@@ -30,7 +30,7 @@ public:
     bool newRow();
     void deleteRow(int row);
     void setTableColumnName(int index, const QString &name);
-    void setColumnHidden(int index, bool hidden);
+//    void setColumnHidden(int index, bool hidden); TODO Maybe not needed
     QString getColumnName(int column);
     void addRelation(int column, const QString &extTable, const QString &extKey, const QString &extDisplay);
     //Call only after opening the table.
@@ -43,6 +43,9 @@ protected:
 
     QSqlRelationalTableModel *m_model;
     QStringList *names;
+
+private:
+    void criticalMessage();
 };
 
 #endif // TABLE_H
