@@ -28,7 +28,7 @@ public:
     int rowsCount();
     int currentRow();
     void addDataWidget(QWidget *widget, int column);
-    void addDataWidget(Qwidget *widget, const QString &columnName);
+    void addDataWidget(QWidget *widget, const QString &columnName);
     void addRelationalComboBox(QComboBox *comboBox, int column);
     void addRelationalComboBox(QComboBox *comboBox, const QString &columnName);
     void reloadRelation(QComboBox *comboBox);
