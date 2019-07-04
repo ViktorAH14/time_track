@@ -2,10 +2,15 @@
 #define VIEWCATALOGFORM_H
 
 #include <QDialog>
+#include <QPointer>
 
 namespace Ui {
 class ViewCatalogForm;
 }
+
+class TableIOMapper;
+
+typedef QPointer<TableIOMapper> MapperPtr;
 
 class ViewCatalogForm : public QDialog
 {
@@ -15,8 +20,17 @@ public:
     explicit ViewCatalogForm(QWidget *parent = 0);
     ~ViewCatalogForm();
 
+    void setMapper(TableIOMapper *mapper);
+
+private slots:
+    void addItem();
+    void deleteItem();
+    void save();
+
 private:
     Ui::ViewCatalogForm *ui;
+
+    MapperPtr mapper;
 };
 
 #endif // VIEWCATALOGFORM_H
