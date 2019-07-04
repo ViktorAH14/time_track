@@ -127,6 +127,31 @@ bool MainWindow::createDB(const QString &dbName)
 
 void MainWindow::createModel()
 {
+    deleteModel();
+
+    organization = new Table(0, "Organization");
+    organization->openTable();
+    organizationMapper = new TableIOMapper(organization);
+
+    position = new Table(0, "Position");
+    position->openTable();
+    positionMapper = new TableIOMapper(position);
+
+    typeworkingtime = new Table(0, "TypeWorkingTime");
+    typeworkingtime->openTable();
+    typeworkingtimeMapper = new TableIOMapper(typeworkingtime);
+
+    person = new Table(0, "Person");
+    person->openTable();
+    person->addRelation("OrganizationID", "Organization", "OrganizationID", "Organization");
+    person->addRelation("PositionID", "Position", "PositionID", "Position");
+    personMapper = new TableIOMapper(person);
+
+    timetrack = new Table(0, "TimeTrack");
+    timetrack->openTable();
+    timetrack->addRelation("PersonID", "Person", "PersonID", "FullName");
+    timetrack->addRelation("TypeWorkingTimeID", "TypeWorkingTime", "TypeWorkingTimeID", "TypeWorkingTime");
+    timetrackMapper = new TableIOMapper(timetrack);
 
 }
 

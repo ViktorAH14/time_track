@@ -38,7 +38,7 @@ void ViewCatalogForm::deleteItem()
 void ViewCatalogForm::save()
 {
     if (!mapper.isNull()) {
-        ui->tableView->submit();// BUG ui->tableView-.submit();
+        ui->tableView->submit();
         mapper->save();
     }
 }
