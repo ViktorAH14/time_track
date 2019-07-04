@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     dbcreator.cpp \
     table.cpp \
     tableiomapper.cpp \
-    viewcatalogform.cpp
+    viewcatalogform.cpp \
+    qupdateableview.cpp
 
 HEADERS  += mainwindow.h \
     dbcreator.h \
     table.h \
     tableiomapper.h \
-    viewcatalogform.h
+    viewcatalogform.h \
+    qupdateableview.h
 
 FORMS    += mainwindow.ui \
     viewcatalogform.ui
