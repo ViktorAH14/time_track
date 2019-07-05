@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTableView" name="tableViewMain"/>
+     <widget class="QUpdateableView" name="tableViewMain"/>
     </item>
    </layout>
   </widget>
@@ -48,6 +48,7 @@
     <addaction name="actionPerson_table"/>
     <addaction name="separator"/>
     <addaction name="actionAdd_record"/>
+    <addaction name="actionSave_record"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -128,8 +129,30 @@
     <string>Add new record.</string>
    </property>
   </action>
+  <action name="actionSave_record">
+   <property name="text">
+    <string>Save record</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QUpdateableView</class>
+   <extends>QTableView</extends>
+   <header>qupdateableview.h</header>
+   <slots>
+    <slot>save()</slot>
+    <slot>openDB()</slot>
+    <slot>newDB()</slot>
+    <slot>showTypeWorkingTimeForm()</slot>
+    <slot>showPositionForm()</slot>
+    <slot>showPersonForm()</slot>
+    <slot>showOrganizationForm()</slot>
+    <slot>addRecord()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -260,6 +283,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionSave_record</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newDB()</slot>
@@ -269,5 +308,6 @@
   <slot>showTypeWorkingTimeForm()</slot>
   <slot>showPersonForm()</slot>
   <slot>addRecord()</slot>
+  <slot>save()</slot>
  </slots>
 </ui>

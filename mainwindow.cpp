@@ -127,7 +127,10 @@ void MainWindow::cancelChange()
 
 void MainWindow::save()
 {
-
+    if (!timetrackMapper.isNull()) {
+        ui->tableViewMain->submit();
+        timetrackMapper->save();
+    }
 }
 
 bool MainWindow::connectDB(const QString &dbName)
