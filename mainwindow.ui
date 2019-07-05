@@ -43,6 +43,7 @@
      <string>Edit</string>
     </property>
     <addaction name="actionOrganization_table"/>
+    <addaction name="actionPosition_table"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -88,7 +89,15 @@
     <string>Organization table</string>
    </property>
    <property name="toolTip">
-    <string>Show organization table.</string>
+    <string>Show table 'Organization'.</string>
+   </property>
+  </action>
+  <action name="actionPosition_table">
+   <property name="text">
+    <string>Position table</string>
+   </property>
+   <property name="toolTip">
+    <string>Show table 'Position'</string>
    </property>
   </action>
  </widget>
@@ -159,10 +168,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionPosition_table</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showPositionForm()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newDB()</slot>
   <slot>openDB()</slot>
   <slot>showOrganizationForm()</slot>
+  <slot>showPositionForm()</slot>
  </slots>
 </ui>
