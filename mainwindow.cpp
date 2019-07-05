@@ -22,6 +22,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     positionForm = new ViewCatalogForm(this);
     positionForm->setWindowTitle(trUtf8("Position form"));
+
+    typeworkingtimeForm = new ViewCatalogForm(this);
+    typeworkingtimeForm->setWindowTitle(trUtf8("Type working time form"));
 }
 
 MainWindow::~MainWindow()
@@ -86,7 +89,11 @@ void MainWindow::showPositionForm()
 
 void MainWindow::showTypeWorkingTimeForm()
 {
-
+    typeworkingtimeForm->exec();
+    if (!timetrackMapper.isNull()) {
+        timetrackMapper->reloadRelations();
+        timetrackMapper->refresh();
+    }
 }
 
 void MainWindow::showPersonForm()
@@ -187,8 +194,8 @@ void MainWindow::deleteModel()
 void MainWindow::setupView()
 {
      organizationForm->setMapper(organizationMapper);
-
      positionForm->setMapper(positionMapper);
+     typeworkingtimeForm->setMapper(typeworkingtimeMapper);
 
     timetrackMapper->setView(ui->tableViewMain);
     timetrackMapper->refresh();

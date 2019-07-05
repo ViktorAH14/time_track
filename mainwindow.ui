@@ -44,6 +44,7 @@
     </property>
     <addaction name="actionOrganization_table"/>
     <addaction name="actionPosition_table"/>
+    <addaction name="actionTypeWorkingtime_table"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -98,6 +99,14 @@
    </property>
    <property name="toolTip">
     <string>Show table 'Position'</string>
+   </property>
+  </action>
+  <action name="actionTypeWorkingtime_table">
+   <property name="text">
+    <string>TypeWorkingTime table</string>
+   </property>
+   <property name="toolTip">
+    <string>Show table 'TypeWorkingTime'.</string>
    </property>
   </action>
  </widget>
@@ -184,11 +193,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionTypeWorkingtime_table</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showTypeWorkingTimeForm()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newDB()</slot>
   <slot>openDB()</slot>
   <slot>showOrganizationForm()</slot>
   <slot>showPositionForm()</slot>
+  <slot>showTypeWorkingTimeForm()</slot>
  </slots>
 </ui>
