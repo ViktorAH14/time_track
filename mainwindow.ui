@@ -46,6 +46,8 @@
     <addaction name="actionPosition_table"/>
     <addaction name="actionTypeWorkingtime_table"/>
     <addaction name="actionPerson_table"/>
+    <addaction name="separator"/>
+    <addaction name="actionAdd_record"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -116,6 +118,14 @@
    </property>
    <property name="toolTip">
     <string>Show table 'Person'.</string>
+   </property>
+  </action>
+  <action name="actionAdd_record">
+   <property name="text">
+    <string>Add record</string>
+   </property>
+   <property name="toolTip">
+    <string>Add new record.</string>
    </property>
   </action>
  </widget>
@@ -234,6 +244,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionAdd_record</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addRecord()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newDB()</slot>
@@ -242,5 +268,6 @@
   <slot>showPositionForm()</slot>
   <slot>showTypeWorkingTimeForm()</slot>
   <slot>showPersonForm()</slot>
+  <slot>addRecord()</slot>
  </slots>
 </ui>

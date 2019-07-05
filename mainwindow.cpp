@@ -110,7 +110,9 @@ void MainWindow::showPersonForm()
 
 void MainWindow::addRecord()
 {
-
+    if (!timetrackMapper.isNull()) {
+        timetrackMapper->newRow();
+    }
 }
 
 void MainWindow::deleteRecord()
