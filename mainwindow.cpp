@@ -117,7 +117,12 @@ void MainWindow::addRecord()
 
 void MainWindow::deleteRecord()
 {
-
+    if (!timetrackMapper.isNull()) {
+        int row = ui->tableViewMain->currentIndex().row();
+        if (row >= 0) {
+            timetrackMapper->deleteRow(row);
+        }
+    }
 }
 
 void MainWindow::cancelChange()
