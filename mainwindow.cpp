@@ -16,6 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    organizationForm = new ViewCatalogForm(this);
+    organizationForm->setWindowTitle(trUtf8("Organization form"));
 }
 
 MainWindow::~MainWindow()
@@ -62,7 +65,11 @@ void MainWindow::openDB()
 
 void MainWindow::showOrganizationForm()
 {
-
+    organizationForm->exec();
+    if (!personMapper.isNull()) {
+        personMapper->reloadRelations();
+        personMapper->refresh();
+    }
 }
 
 void MainWindow::showPositionForm()
@@ -172,5 +179,16 @@ void MainWindow::deleteModel()
 
 void MainWindow::setupView()
 {
+     organizationForm->setMapper(organizationMapper);
 
+    timetrackMapper->setView(ui->tableViewMain);
+    timetrackMapper->refresh();
+    timetrackMapper->setColumnName(0, trUtf8("Time track ID"));
+    timetrackMapper->setColumnName(1, trUtf8("Person"));
+    timetrackMapper->setColumnName(2, trUtf8("Date"));
+    timetrackMapper->setColumnName(3, trUtf8("Time"));
+    timetrackMapper->setColumnName(4, trUtf8("Type working time ID"));
+//    ui->tableViewMain->hideColumn(0);
+    ui->tableViewMain->resizeColumnsToContents();
+    ui->tableViewMain->horizontalHeader()->setStretchLastSection(true);
 }
