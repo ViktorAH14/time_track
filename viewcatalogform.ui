@@ -41,9 +41,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pbCansel">
+      <widget class="QPushButton" name="pbCancel">
        <property name="text">
-        <string>Cansel</string>
+        <string>Cancel</string>
        </property>
       </widget>
      </item>
@@ -56,6 +56,18 @@
    <class>QUpdateableView</class>
    <extends>QTableView</extends>
    <header>qupdateableview.h</header>
+   <slots>
+    <slot>save()</slot>
+    <slot>openDB()</slot>
+    <slot>newDB()</slot>
+    <slot>showTypeWorkingTimeForm()</slot>
+    <slot>showPositionForm()</slot>
+    <slot>showPersonForm()</slot>
+    <slot>showOrganizationForm()</slot>
+    <slot>addRecord()</slot>
+    <slot>deleteRecord()</slot>
+    <slot>canselChanges()</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
@@ -109,7 +121,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pbCansel</sender>
+   <sender>pbCancel</sender>
    <signal>clicked()</signal>
    <receiver>ViewCatalogForm</receiver>
    <slot>close()</slot>

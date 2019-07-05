@@ -50,6 +50,7 @@
     <addaction name="actionAdd_record"/>
     <addaction name="actionSave_record"/>
     <addaction name="actionDelete_row"/>
+    <addaction name="actionCancel_changes"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -141,6 +142,14 @@
     <string>Delete row</string>
    </property>
   </action>
+  <action name="actionCancel_changes">
+   <property name="text">
+    <string>Cancel changes</string>
+   </property>
+   <property name="toolTip">
+    <string>Cancel changes</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -158,6 +167,7 @@
     <slot>showOrganizationForm()</slot>
     <slot>addRecord()</slot>
     <slot>deleteRecord()</slot>
+    <slot>canselChanges()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -323,6 +333,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionCancel_changes</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>cancelChanges()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newDB()</slot>
@@ -334,5 +360,6 @@
   <slot>addRecord()</slot>
   <slot>save()</slot>
   <slot>deleteRecord()</slot>
+  <slot>cancelChanges()</slot>
  </slots>
 </ui>

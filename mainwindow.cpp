@@ -125,9 +125,11 @@ void MainWindow::deleteRecord()
     }
 }
 
-void MainWindow::cancelChange()
+void MainWindow::cancelChanges()
 {
-
+    if (!timetrackMapper.isNull()) {
+        timetrackMapper->cancelChanges();
+    }
 }
 
 void MainWindow::save()

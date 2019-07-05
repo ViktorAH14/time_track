@@ -34,7 +34,7 @@ private slots:
 
     void addRecord();
     void deleteRecord();
-    void cancelChange();
+    void cancelChanges();
     void save();
 
 private:

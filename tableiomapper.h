@@ -40,7 +40,7 @@ public:
 public slots:
     void newRow();
     void save();
-    void canselChanges();
+    void cancelChanges();
     void refresh();
     void deleteRow(int num);
 

@@ -126,7 +126,7 @@ void TableIOMapper::save()
     m_table->save();
 }
 
-void TableIOMapper::canselChanges()
+void TableIOMapper::cancelChanges()
 {
     m_table->canselChanges();
 }
