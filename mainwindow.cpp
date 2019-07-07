@@ -4,6 +4,7 @@
 #include "table.h"
 #include "tableiomapper.h"
 #include "viewcatalogform.h"
+#include "reportform.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -125,6 +126,13 @@ void MainWindow::showPersonForm()
         timetrackMapper->reloadRelations();
         timetrackMapper->refresh();
     }
+}
+
+void MainWindow::showReportForm()
+{
+    ReportForm *reportForm = new ReportForm(this);
+    reportForm->setWindowTitle(trUtf8("Report"));
+    reportForm->exec();
 }
 
 void MainWindow::addRecord()

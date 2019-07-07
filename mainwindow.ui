@@ -37,6 +37,7 @@
     <addaction name="action_Open_database"/>
     <addaction name="separator"/>
     <addaction name="actionPrint"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
@@ -52,6 +53,8 @@
     <addaction name="actionSave_record"/>
     <addaction name="actionDelete_row"/>
     <addaction name="actionCancel_changes"/>
+    <addaction name="separator"/>
+    <addaction name="actionReport"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -155,6 +158,14 @@
    <property name="text">
     <string>&amp;Print</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionReport">
+   <property name="text">
+    <string>Report</string>
+   </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -174,6 +185,7 @@
     <slot>addRecord()</slot>
     <slot>deleteRecord()</slot>
     <slot>canselChanges()</slot>
+    <slot>showReportForm()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -371,6 +383,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionReport</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showReportForm()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newDB()</slot>
@@ -384,5 +412,6 @@
   <slot>deleteRecord()</slot>
   <slot>cancelChanges()</slot>
   <slot>print()</slot>
+  <slot>showReportForm()</slot>
  </slots>
 </ui>

@@ -32,6 +32,7 @@ private slots:
     void showPositionForm();
     void showTypeWorkingTimeForm();
     void showPersonForm();
+    void showReportForm();
 
     void addRecord();
     void deleteRecord();

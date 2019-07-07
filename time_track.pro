@@ -18,17 +18,20 @@ SOURCES += main.cpp\
     table.cpp \
     tableiomapper.cpp \
     viewcatalogform.cpp \
-    qupdateableview.cpp
+    qupdateableview.cpp \
+    reportform.cpp
 
 HEADERS  += mainwindow.h \
     dbcreator.h \
     table.h \
     tableiomapper.h \
     viewcatalogform.h \
-    qupdateableview.h
+    qupdateableview.h \
+    reportform.h
 
 FORMS    += mainwindow.ui \
-    viewcatalogform.ui
+    viewcatalogform.ui \
+    reportform.ui
 
 RESOURCES += \
     time_track.qrc
