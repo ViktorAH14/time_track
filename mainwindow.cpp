@@ -10,6 +10,9 @@
 #include <QSqlError>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QPainter>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -70,6 +73,22 @@ void MainWindow::openDB()
             setupView();
         }
     }
+}
+
+void MainWindow::print()
+{
+    QPrinter printer;
+    QPainter painter;
+    painter.begin(&printer);
+    double xscale = printer.pageRect().width()/double(ui->tableViewMain->width());
+    double yscale = printer.pageRect().height()/double(ui->tableViewMain->height());
+    double scale = qMin(xscale, yscale);
+    painter.translate(printer.paperRect().x() + printer.pageRect().width()/2,
+                       printer.paperRect().y() + printer.pageRect().height()/2);
+    painter.scale(scale, scale);
+    painter.translate(-width()/2, -height()/2);
+
+    ui->tableViewMain->render(&painter);
 }
 
 void MainWindow::showOrganizationForm()

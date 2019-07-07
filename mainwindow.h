@@ -26,6 +26,7 @@ public:
 private slots:
     void newDB();
     void openDB();
+    void print();
 
     void showOrganizationForm();
     void showPositionForm();

@@ -36,6 +36,7 @@
     <addaction name="action_New_database"/>
     <addaction name="action_Open_database"/>
     <addaction name="separator"/>
+    <addaction name="actionPrint"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
@@ -148,6 +149,11 @@
    </property>
    <property name="toolTip">
     <string>Cancel changes</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="text">
+    <string>&amp;Print</string>
    </property>
   </action>
  </widget>
@@ -349,6 +355,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionPrint</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>print()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newDB()</slot>
@@ -361,5 +383,6 @@
   <slot>save()</slot>
   <slot>deleteRecord()</slot>
   <slot>cancelChanges()</slot>
+  <slot>print()</slot>
  </slots>
 </ui>

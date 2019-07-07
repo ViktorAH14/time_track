@@ -18,9 +18,6 @@ void ViewCatalogForm::setMapper(TableIOMapper *mapper)
 {
     this->mapper = mapper;
     mapper->setView(ui->tableView);
-//    mapper->setColumnName(0, windowTitle());
-//    ui->tableView->setColumnWidth(0, 270);
-    //    ui->tableView->hideColumn(1);
     ui->tableView->resizeColumnsToContents();
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 }
