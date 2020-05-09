@@ -33,3 +33,7 @@
 
 # Project user
 *.user
+
+build/
+*.stash
+Makefile
