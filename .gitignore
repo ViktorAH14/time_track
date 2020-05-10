@@ -30,9 +30,16 @@
 *.exe
 *.out
 *.app
+timetrack
 
 # Project user
 *.user
 ui_*
 *.stash
 Makefile
+moc/
+obj/
+rcc/
+ui/
+*.autosave
+
