@@ -33,3 +33,6 @@
 
 # Project user
 *.user
+ui_*
+*.stash
+Makefile

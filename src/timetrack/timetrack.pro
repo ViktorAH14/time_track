@@ -8,7 +8,7 @@ QT       += core gui sql printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = time_track
+TARGET = timetrack
 TEMPLATE = app
 
 
@@ -35,3 +35,6 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     time_track.qrc
+
+include( ../../common.pri )
+include( ../../app.pri )
